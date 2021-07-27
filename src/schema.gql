@@ -2,12 +2,25 @@
 # THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
 # ------------------------------------------------------
 
+type Maintenance {
+  """Id da manutenção"""
+  id: Int!
+
+  """Descrição da manutenção"""
+  description: String!
+}
+
 type Car {
-  """Example field (placeholder)"""
-  exampleField: Int!
+  """Id do carro"""
+  id: Int!
+
+  """Modelo do carro"""
+  model: String!
+  maintenances: [Maintenance!]
 }
 
 type Query {
+  cars: [Car!]!
   car(id: Int!): Car!
 }
 
@@ -18,12 +31,26 @@ type Mutation {
 }
 
 input CreateCarInput {
-  """Example field (placeholder)"""
-  exampleField: Int!
+  """Id do carro"""
+  id: Int!
+
+  """Modelo do carro"""
+  model: String!
+  maintenances: [CreateMaintenanceInput!]!
+}
+
+input CreateMaintenanceInput {
+  """Id da manutenção"""
+  id: Int!
+
+  """Descrição da manutenção"""
+  description: String!
 }
 
 input UpdateCarInput {
-  """Example field (placeholder)"""
-  exampleField: Int
   id: Int!
+
+  """Modelo do carro"""
+  model: String!
+  maintenances: [CreateMaintenanceInput!]
 }
